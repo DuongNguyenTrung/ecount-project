@@ -4,10 +4,15 @@
  */
 package com.fpt.ecount_swp391.dao;
 
-/**
- *
- * @author duong
- */
+import com.fpt.ecount_swp391.dto.DebitDto;
+import com.fpt.ecount_swp391.model.Debit;
+import java.util.List;
+
 public interface DebitDAO {
-    
+
+    List<DebitDto> getDebitByDebtorIdAndUserId(int uid, int debtorId);
+
+    boolean insert(int userId, int debtorId, Debit debit);
+    boolean update( Debit debit);
+    boolean delete( int debitId);
 }

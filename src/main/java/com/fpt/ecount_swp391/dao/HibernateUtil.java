@@ -4,12 +4,18 @@
  */
 package com.fpt.ecount_swp391.dao;
 
+import com.fpt.ecount_swp391.dao.impl.DebtorDAOImpl;
 import com.fpt.ecount_swp391.dao.impl.UserDAOimpl;
+import com.fpt.ecount_swp391.dto.DebtorDto;
 import com.fpt.ecount_swp391.dto.UserDto;
 import com.fpt.ecount_swp391.dto.request.UserRequestDTO;
 import com.fpt.ecount_swp391.model.Debit;
 import com.fpt.ecount_swp391.model.Debtor;
 import com.fpt.ecount_swp391.model.User;
+import com.fpt.ecount_swp391.util.DateHelper;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -58,26 +64,15 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public static void main(String[] args) {
-        UserDAOimpl dao = new UserDAOimpl();
-        Transaction transaction = null;
-
-        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
-            transaction = session.beginTransaction();
-            Debtor d = new Debtor();
-            d.setFullname("duong");
-            d.setAddress("qo");
-            d.setEmail("duongnthe141567@fpt.edu.vn");
-            
-            session.save(d);
-
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
+    public static void main(String[] args) throws ParseException {
+         DebtorDAO dao = new DebtorDAOImpl();
+         
+         List<DebtorDto> ls = dao.getAllDebtorByUserId(1);
+         
+         for (DebtorDto l : ls) {
+             System.out.println(l.getFullname());
+             System.out.println(l.getTotal());
         }
+        
     }
 }

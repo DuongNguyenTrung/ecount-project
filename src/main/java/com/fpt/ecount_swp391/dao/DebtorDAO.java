@@ -4,9 +4,11 @@
  */
 package com.fpt.ecount_swp391.dao;
 
+import com.fpt.ecount_swp391.dto.DebtorDto;
 import java.util.List;
 
-
 public interface DebtorDAO {
-    
+
+    List<DebtorDto> getAllDebtorByUserId(int id);
+    List<DebtorDto> findAll(int id);
 }
