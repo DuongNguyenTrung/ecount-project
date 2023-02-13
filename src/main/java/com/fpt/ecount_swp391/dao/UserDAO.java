@@ -27,4 +27,7 @@ public interface UserDAO {
 
     boolean isUsernameExist(String username);
 
+    boolean setVerifyToken(int id, String token);
+    boolean checkVerifyToken(int id, String token);
+
 }

@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>ResetPasswordController</servlet-name>
-        <servlet-class>com.fpt.ecount_swp391.controller.ResetPasswordController</servlet-class>
+        <servlet-class>com.fpt.ecount_swp391.controller.VerifyController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>

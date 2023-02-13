@@ -21,7 +21,7 @@
                     <div class="signup-content">
                         <div class="signup-form">
                             <h2 class="form-title">Sign up</h2>
-                            <form method="POST" class="register-form" action="signUp"
+                            <form method="POST" class="register-form" action="signup"
                                   id="register-form">
                                 <div class="form-group">
                                     <label for="name"><i
@@ -32,7 +32,7 @@
                                 <div class="error ">${errorName}</div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-                                        type="password" required onblur="checkRegex('pass', 'errPwd', /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d]{6,}/g, 'Password must contains at least 1 upper, 1 lower and more than 6 letters!')" required="" name="pass" id="pass" placeholder="Password" />
+                                        type="password" required onblur="checkRegex('pass', 'errPwd', /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d]{6,}/g, 'Password must contains at least 1 upper, 1 lower and more than 6 letters!')" required="" name="pwd" id="pass" placeholder="Password" />
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
@@ -41,7 +41,7 @@
                                 <div class="error" id="errPwd">${errorPassword}</div>
                                 <div class="form-group">
                                     <label for="gmail"><i class="zmdi zmdi-email"></i></label> <input
-                                        type="email"  onblur="checkRegex('email', 'errEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g, 'Email invalid!')" required name="email" id="email" placeholder="Email" />
+                                        type="email" name="email"  onblur="checkRegex('email', 'errEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g, 'Email invalid!')" required id="email" placeholder="Email" />
                                 </div>
                                 <div class="error" id="errEmail">${errorEmail}</div>
                                 <div class="form-group form-button">

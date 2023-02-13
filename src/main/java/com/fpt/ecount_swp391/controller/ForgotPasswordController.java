@@ -5,13 +5,13 @@
 package com.fpt.ecount_swp391.controller;
 
 import com.fpt.ecount_swp391.dao.impl.UserDAOimpl;
+import com.fpt.ecount_swp391.util.ServletHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 
 public class ForgotPasswordController extends HttpServlet {
 
@@ -20,12 +20,13 @@ public class ForgotPasswordController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletHelper.forward(request, response, "resetpass.jsp");
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String verifyToken = request.getParameter("verifytoken");
     }
 
     /**

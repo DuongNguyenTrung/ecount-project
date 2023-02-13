@@ -18,10 +18,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mindrot.jbcrypt.BCrypt;
 
-/**
- *
- * @author duong
- */
 public class UserDAOimpl implements UserDAO {
 
     @Override
@@ -141,6 +137,7 @@ public class UserDAOimpl implements UserDAO {
         return null;
     }
 //@Transactional ,  Spring AOP( AspectJ)
+
     @Override
     public boolean isUsernameExist(String username) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -155,6 +152,44 @@ public class UserDAOimpl implements UserDAO {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    @Override
+    public boolean setVerifyToken(int id, String token) {
+        Transaction transaction = null;
+
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            User oldUser = session.find(User.class, id);
+            oldUser.setVerifyToken(token);
+            session.merge(oldUser);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkVerifyToken(int id, String token) {
+
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            User oldUser = session.find(User.class, id);
+            String verifyToken = oldUser.getVerifyToken();
+            if (verifyToken.isEmpty()) {
+                return false;
+            }
+            return verifyToken.equals(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

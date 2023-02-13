@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author duong
  */
-public class ResetPasswordController extends HttpServlet {
+public class VerifyController extends HttpServlet {
     private UserDAOimpl dao = new UserDAOimpl();
     
     @Override
