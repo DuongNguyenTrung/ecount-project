@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>SignupController</servlet-name>
-        <servlet-class>SignupController</servlet-class>
+        <servlet-class>com.fpt.ecount_swp391.controller.SignupController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
