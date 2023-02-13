@@ -41,6 +41,8 @@ public class User {
     private String phone;
     private Integer role;
     private Boolean status;
+    @Column(name = "verify_token")
+    private String verifyToken;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Debit> debits;
