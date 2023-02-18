@@ -3,27 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.fpt.ecount_swp391.dao;
-
-import com.fpt.ecount_swp391.dao.impl.DebtorDAOImpl;
-import com.fpt.ecount_swp391.dao.impl.UserDAOimpl;
-import com.fpt.ecount_swp391.dto.DebtorDto;
-import com.fpt.ecount_swp391.dto.UserDto;
-import com.fpt.ecount_swp391.dto.request.UserRequestDTO;
 import com.fpt.ecount_swp391.model.Debit;
 import com.fpt.ecount_swp391.model.Debtor;
 import com.fpt.ecount_swp391.model.User;
 import com.fpt.ecount_swp391.util.DateHelper;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class HibernateUtil {
 
@@ -65,14 +57,9 @@ public class HibernateUtil {
     }
 
     public static void main(String[] args) throws ParseException {
-         DebtorDAO dao = new DebtorDAOImpl();
-         
-         List<DebtorDto> ls = dao.getAllDebtorByUserId(1);
-         
-         for (DebtorDto l : ls) {
-             System.out.println(l.getFullname());
-             System.out.println(l.getTotal());
-        }
-        
+        Date ep = DateHelper.addMinutes(new Date(), 3);
+        System.out.println(new Date());
+        System.out.println(ep.getTime() < new Date().getTime());
+
     }
 }

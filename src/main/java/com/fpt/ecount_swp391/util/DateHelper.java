@@ -19,10 +19,21 @@ public class DateHelper {
         return formatter.parse(date);
     }
 
+    public static String toString(Date date) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return formatter.format(date);
+    }
+
     public static Date addDays(Date date, int days) throws ParseException {
         Instant ins = date.toInstant();
         return Date.from(ins.plus(days, ChronoUnit.DAYS));
     }
+
+    public static Date addMinutes(Date date, int minutes) throws ParseException {
+        Instant ins = date.toInstant();
+        return Date.from(ins.plus(minutes, ChronoUnit.MINUTES));
+    }
+
     public static Date addDays(String dateString, int days) throws ParseException {
         Instant ins = toDate(dateString).toInstant();
         return Date.from(ins.plus(days, ChronoUnit.DAYS));

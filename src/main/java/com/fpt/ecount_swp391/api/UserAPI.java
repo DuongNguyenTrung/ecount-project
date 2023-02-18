@@ -8,10 +8,10 @@ import com.fpt.ecount_swp391.dao.impl.UserDAOimpl;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -45,7 +45,7 @@ public class UserAPI extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         String username = request.getParameter("username");
-        out.print(gson.toJson(dao.isUsernameExist(username)));
+        out.print(gson.toJson(dao.getUserByUsername(username) == null));
         out.flush();
     }
 

@@ -8,6 +8,8 @@
         <link rel="stylesheet"
               href="templateLogin/fonts/material-icon/css/material-design-iconic-font.min.css">
         <link rel="stylesheet" href="templateLogin/css/style.css">
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+
         <style type="text/css">
             .error {
                 color: red;
@@ -44,6 +46,10 @@
                                         type="email" name="email"  onblur="checkRegex('email', 'errEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g, 'Email invalid!')" required id="email" placeholder="Email" />
                                 </div>
                                 <div class="error" id="errEmail">${errorEmail}</div>
+
+                                <div class="g-recaptcha"
+                                     data-sitekey="6Lf9yVMkAAAAAH8teVX5Z436cQalHCiKzF-J5I4S"></div> 
+                                <div style="color: red;">${error }</div>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup" id="signup"
                                            class="form-submit" value="Register" />
@@ -63,6 +69,7 @@
             </div>
         </div>
         <script>
+            
             const checkRegex = (field, err, regex, msg) => {
                 document.getElementById(err).innerHTML = "";
                 const pwd = document.getElementById(field).value;

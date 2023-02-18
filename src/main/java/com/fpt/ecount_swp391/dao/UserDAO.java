@@ -23,11 +23,12 @@ public interface UserDAO {
 
     int changePwd(int id, String oldpwd, String pwd);
 
-    String resetPwd(int id);
+    boolean resetPwd(String email,String pwd);
 
-    boolean isUsernameExist(String username);
+    User getUserByUsername(String username);
 
-    boolean setVerifyToken(int id, String token);
-    boolean checkVerifyToken(int id, String token);
+    boolean setVerifyToken(String email, String token);
+
+    boolean checkVerifyToken(String email, String token);
 
 }

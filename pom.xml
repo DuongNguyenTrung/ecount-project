@@ -21,12 +21,29 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- jstl -->
+        <!--         https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api 
         <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>2.0.0</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>-->
+
+        <!-- JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
+
+        <!-- Tomcat 9 Servlet API -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>9.0.54</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!-- hibernate -->
         <dependency>
@@ -49,7 +66,8 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-        <!-- API, java.xml.bind module -->
+        <!--         API, java.xml.bind module 
+        -->        
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>

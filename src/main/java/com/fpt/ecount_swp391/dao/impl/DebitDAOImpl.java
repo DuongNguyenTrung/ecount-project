@@ -10,8 +10,6 @@ import com.fpt.ecount_swp391.dto.DebitDto;
 import com.fpt.ecount_swp391.model.Debit;
 import com.fpt.ecount_swp391.model.Debtor;
 import com.fpt.ecount_swp391.model.User;
-import com.fpt.ecount_swp391.util.DateHelper;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;

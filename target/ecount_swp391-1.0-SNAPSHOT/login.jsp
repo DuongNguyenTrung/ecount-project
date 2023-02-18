@@ -20,8 +20,8 @@
                                 <img src="templateLogin/images/signin-image.jpg"
                                      alt="sign up image">
                             </figure>
-                            <a href="sign_up.jsp" class="signup-image-link">Create an account</a>
-                            <a href="resetpass.jsp" class="signup-image-link">Reset password</a>
+                            <a href="signup" class="signup-image-link">Create an account</a>
+                            <a href="forgot" class="signup-image-link">Reset password</a>
                         </div>
 
                         <div class="signin-form">
