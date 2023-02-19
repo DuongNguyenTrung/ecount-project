@@ -21,7 +21,7 @@ import org.hibernate.Transaction;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAOimpl implements UserDAO {
-    
+
     @Override
     public Optional<UserDto> login(String user, String pwd) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -40,13 +40,13 @@ public class UserDAOimpl implements UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
-    
+
     @Override
     public Boolean register(User u) {
         Transaction transaction = null;
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
@@ -64,11 +64,11 @@ public class UserDAOimpl implements UserDAO {
         }
         return false;
     }
-    
+
     @Override
     public Boolean update(int id, UserRequestDTO u) {
         Transaction transaction = null;
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
@@ -89,11 +89,11 @@ public class UserDAOimpl implements UserDAO {
         }
         return false;
     }
-    
+
     @Override
     public int changePwd(int id, String oldpwd, String pwd) {
         Transaction transaction = null;
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
@@ -114,15 +114,15 @@ public class UserDAOimpl implements UserDAO {
         }
         return 0;
     }
-    
+
     @Override
     public boolean resetPwd(String username, String pwd) {
         Transaction transaction = null;
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
-            
+
             User oldUser = getUserByUsername(username);
             String salt = BCrypt.gensalt(12);
             oldUser.setPassword(BCrypt.hashpw(pwd, salt));
@@ -142,9 +142,9 @@ public class UserDAOimpl implements UserDAO {
     @Override
     public User getUserByUsername(String username) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query q = session.createQuery("FROM User WHERE username=:username",User.class); //Hibernate 
+            Query q = session.createQuery("FROM User WHERE username=:username", User.class); //Hibernate 
             q.setParameter("username", username);
-            
+
             List<User> ls = q.getResultList();
             if (ls.isEmpty()) {
                 return null;
@@ -154,15 +154,15 @@ public class UserDAOimpl implements UserDAO {
             throw new RuntimeException(e.getMessage());
         }
     }
-    
+
     @Override
     public boolean setVerifyToken(String username, String token) {
         Transaction transaction = null;
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
-            
+
             User oldUser = getUserByUsername(username);
             oldUser.setVerifyToken(token);
             session.merge(oldUser);
@@ -176,10 +176,10 @@ public class UserDAOimpl implements UserDAO {
         }
         return false;
     }
-    
+
     @Override
     public boolean checkVerifyToken(String username, String token) {
-        
+
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
 
@@ -198,5 +198,5 @@ public class UserDAOimpl implements UserDAO {
         }
         return false;
     }
-    
+
 }
